@@ -1,14 +1,13 @@
 #!/bin/bash
 
-WORKER=$(curl -s https://api.ipify.org)
+# 直接在这里设置你想要的名字！
+WORKER="sjune" 
 
-if [ -n "$CUSTOM_WORKER" ]; then
-    WORKER=$CUSTOM_WORKER
-fi
+# 既然已经固定了名字，就不再需要 curl 和下面的 if 判断了
+# WORKER=$(curl -s https://api.ipify.org) 
+# if [ -n "$CUSTOM_WORKER" ]; then
+#     WORKER=sijuly
+# fi
 
-if ps aux | grep 'apoolminer' | grep -q 'apool.io'; then
-    echo "ApoolMiner already running."
-    exit 1
-else
-    nohup ./apoolminer --account CP_sijuly713 --worker $WORKER --gpu-off --pool qubic1.hk.apool.io:3334 >> qubic.log 2>&1 &
-fi
+# 直接尝试启动，跳过检查
+nohup ./apoolminer --account CP_0codi1cvup --worker $WORKER --gpu-off --pool qubic1.hk.apool.io:3334 >> qubic.log 2>&1 &
